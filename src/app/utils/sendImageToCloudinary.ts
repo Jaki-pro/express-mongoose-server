@@ -20,6 +20,7 @@ export const sendImageToCloudinary = async (
     .catch((error) => {
       console.log(error);
     });
+
   //delete file from uploads folder
   fs.unlink(path, function (err) {
     if (err) console.log(err);
@@ -28,6 +29,7 @@ export const sendImageToCloudinary = async (
   // console.log(uploadResult);
   return uploadResult;
 };
+
 // upload file to uploads folder
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

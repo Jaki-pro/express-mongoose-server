@@ -3,6 +3,8 @@ const app: Application = express();
 import cors from "cors";
 import cookieParse from "cookie-parser";
 import router from "./app/routes";
+import notFound from "./app/middlewares/notFound";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(cookieParse()); // for cookies
@@ -16,4 +18,6 @@ app.get("/", async (req, res) => {
     message: "Welcome to the Express API!",
   });
 });
+app.use(notFound);
+app.use(globalErrorHandler);
 export default app;
