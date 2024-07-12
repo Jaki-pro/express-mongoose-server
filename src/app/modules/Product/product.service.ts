@@ -9,19 +9,20 @@ const createProductIntoDB = async (payload: Partial<TProduct>, file: any) => {
   let imageName = payload?.name;
   imageName = imageName?.split(" ").join("-");
   imageName = `${payload?.category?.split(" ").join("-")}-${imageName}`;
-  // console.log("imageName", imageName);
   const uploadResult = await sendImageToCloudinary(imageName, file?.path);
   payload.image = uploadResult?.secure_url;
   const result = await Product.create(payload);
   return result;
 };
+
 //retrieve all products
 const getAllProductsFromDB = async (query: Record<string, unknown>) => {
   const searchableFields = ["name"];
   const productsQuery = new QueryBuiler(Product.find(), query)
     .search(searchableFields)
     .filter()
-    .sort();
+    .sort()
+    .paginate();
   const result = await productsQuery.modelQuery;
   return result;
 };

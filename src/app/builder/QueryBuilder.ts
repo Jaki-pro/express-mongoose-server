@@ -8,6 +8,7 @@ class QueryBuiler<T> {
     this.query = query;
   }
   search(searchableFields: string[]) {
+    //console.log(this?.query);
     if (this?.query?.searchTerm) {
       this.modelQuery = this.modelQuery.find({
         $or: searchableFields.map(
@@ -25,9 +26,31 @@ class QueryBuiler<T> {
   }
   filter() {
     const queryObj = { ...this.query };
-    const excludeFields = ["searchTerm", "sort", "limit", "page", "fields"];
+    const excludeFields = [
+      "searchTerm",
+      "sort",
+      "limit",
+      "page",
+      "fields",
+      "price",
+    ];
+    const price: number[] = [];
+    if (queryObj?.price)
+      (queryObj.price as string)
+        .split("-")
+        .filter((field) => price.push(parseInt(field)));
+
     excludeFields.forEach((field) => delete queryObj[field]);
-    this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
+    if (queryObj.category === "") delete queryObj["category"];
+    if (queryObj.brand === "") delete queryObj["brand"];
+    if (queryObj.rating === "") delete queryObj["rating"];
+    if (price.length > 0)
+      this.modelQuery = this.modelQuery.find({
+        ...(queryObj as FilterQuery<T>),
+        $and: [{ price: { $gte: price[0] } }, { price: { $lte: price[1] } }],
+      });
+    else this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
+    //console.log("final", queryObj);
     return this;
   }
   sort() {

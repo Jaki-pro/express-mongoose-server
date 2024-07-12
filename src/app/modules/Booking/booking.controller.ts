@@ -4,13 +4,11 @@ import { BookingServices } from "./booking.service";
 import sendResponse from "../../utils/sendResponse";
 
 const createBooking = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookingServices.createBookingIntoDB(
-    req.params.productId
-  );
+  const result = await BookingServices.createBookingIntoDB(req.body);
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: "Booking created successfully",
+    message: "Order placed successfully",
     data: result,
   });
 });

@@ -1,8 +1,8 @@
+/* eslint-disable no-console */
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import fs from "fs";
 import config from "../config";
-
 cloudinary.config({
   cloud_name: config.cloudinary_cloud_name,
   api_key: config.cloudinary_api_key,

@@ -2,12 +2,14 @@ import { Types } from "mongoose";
 
 export type TBooking = {
   productId: Types.ObjectId;
-  name: string;
-  brand: string;
-  stock: number;
+  title: string;
+  customerName: string;
+  customerEmail: string;
+  customerNumber: string;
+  customerAddress: string;
   price: number;
-  image: string;
-  booked: number;
+  quantity: number;
   subTotalPrice: number;
+  vat: number;
   totalPrice: number;
 };

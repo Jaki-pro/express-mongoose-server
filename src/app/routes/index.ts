@@ -9,7 +9,7 @@ const moduleRoutes = [
     router: ProductRoutes,
   },
   {
-    path: "/bookings",
+    path: "/orders",
     router: BookingRoutes,
   },
 ];
