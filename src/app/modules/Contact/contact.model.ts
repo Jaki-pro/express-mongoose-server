@@ -1,4 +1,3 @@
-import { TContact } from "./contact.model";
 import { model, Schema } from "mongoose";
 export type TContact = {
   name: string;

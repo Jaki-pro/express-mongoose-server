@@ -9,7 +9,9 @@ const createProductIntoDB = async (payload: Partial<TProduct>, file: any) => {
   let imageName = payload?.name;
   imageName = imageName?.split(" ").join("-");
   imageName = `${payload?.category?.split(" ").join("-")}-${imageName}`;
-  const uploadResult = await sendImageToCloudinary(imageName, file?.path);
+  const uploadResult = await sendImageToCloudinary(file.buffer, imageName);
+  // console.log(uploadResult);
+  // return null;
   payload.image = uploadResult?.secure_url;
   const result = await Product.create(payload);
   return result;

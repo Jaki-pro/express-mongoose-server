@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import { ProductServices } from "./product.service";
 
 const createProduct = catchAsync(async (req: Request, res: Response) => {
-  // console.log("file", req.file);
+  // console.log("file", req.file?.buffer);
   const result = await ProductServices.createProductIntoDB(req.body, req.file);
   sendResponse(res, {
     statusCode: httpStatus.OK,

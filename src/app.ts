@@ -21,3 +21,5 @@ app.get("/", async (req, res) => {
 app.use(notFound);
 app.use(globalErrorHandler);
 export default app;
+// app.use(express.static("uploads"));
+// app.use(express.static(path.join(__dirname, "public")));

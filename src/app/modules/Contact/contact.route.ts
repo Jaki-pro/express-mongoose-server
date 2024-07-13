@@ -1,6 +1,5 @@
 import { Router } from "express";
 import catchAsync from "../../utils/catchAsync";
-import { Contact } from "./contact.model";
 import sendResponse from "../../utils/sendResponse";
 import { sendEmail } from "../../utils/sendEmail";
 
