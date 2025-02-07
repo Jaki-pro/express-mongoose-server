@@ -28,8 +28,8 @@ const updateAdminIntoDB = async (id: string, payload: Partial<TAdmin>) => {
 };
 const deleteAdminFromDB = async (id: string) => {
   const admin = await Admin.findById(id);
-  const userDelete = await User.findByIdAndDelete(admin?.user);
-  const adminDelete = await Admin.findByIdAndDelete(id);
+  await User.findByIdAndDelete(admin?.user);
+  await Admin.findByIdAndDelete(id);
   return null;
 };
 export const adminServices = {

@@ -1,4 +1,3 @@
-import httpStatus from "http-status";
 import AppError from "../../errors/AppError";
 import { Admin } from "../Admin/admin.model";
 import { Customer } from "../Customer/customer.model";

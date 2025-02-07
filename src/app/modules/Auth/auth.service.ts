@@ -9,7 +9,6 @@ const loginUser = async (payload: TLoginUser) => {
   // checking if the user exists
   // const user = await User.isUserExistsByCustomId(payload?.id);
   const user = await User.findOne({ email: payload?.email });
-  console.log(user);
   if (!user) {
     // custom static method
     throw new AppError(httpStatus.NOT_FOUND, "User not found");

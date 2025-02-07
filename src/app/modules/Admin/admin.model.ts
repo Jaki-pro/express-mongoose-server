@@ -1,4 +1,4 @@
-import { model, Schema, Types } from "mongoose";
+import { model, Schema } from "mongoose";
 import { TAdmin } from "./admin.interface";
 
 const AdminSchema = new Schema<TAdmin>(
@@ -23,16 +23,6 @@ const AdminSchema = new Schema<TAdmin>(
         type: String,
         required: true,
       },
-    },
-    gender: {
-      type: String,
-      enum: ["male", "female", "other"],
-      required: true,
-    },
-    contactNo: {
-      type: String,
-      required: true,
-      trim: true,
     },
     isDeleted: {
       type: Boolean,

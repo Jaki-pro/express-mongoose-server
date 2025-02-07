@@ -7,7 +7,5 @@ export type TAdmin = {
     firstName: string;
     lastName: string;
   };
-  gender: "male" | "female" | "other"; // Use specific options if applicable
-  contactNo: string;
   isDeleted?: boolean;
 };

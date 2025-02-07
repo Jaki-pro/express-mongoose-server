@@ -31,8 +31,8 @@ const updateCustomerIntoDB = async (
 };
 const deleteCustomerFromDB = async (id: string) => {
   const admin = await Customer.findById(id);
-  const userDelete = await User.findByIdAndDelete(admin?.user);
-  const customerDelete = await Customer.findByIdAndDelete(id);
+  await User.findByIdAndDelete(admin?.user);
+  await Customer.findByIdAndDelete(id);
   return null;
 };
 export const customerServices = {
